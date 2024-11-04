@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5e2b25;
+    padding: 10px 20px;
+    color: #fff;
+  }
+  
+  .header-logo h1 {
+    font-size: 24px;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar input {
+    padding: 8px;
+    border-radius: 4px 0 0 4px;
+    border: none;
+    outline: none;
+  }
+  
+  .search-bar button {
+    padding: 8px;
+    background-color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+  
+  .header-icons span {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .offers h2 {
+    color: #5e2b25;
+    margin-bottom: 20px;
+  }
+  
+  .product-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .product-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .product-card .timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+  
+  .product-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .product-card h3 {
+    font-size: 18px;
+    color: #5e2b25;
+  }
+  
+  .product-card p {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .product-card .price {
+    font-weight: bold;
+    color: #5e2b25;
+    margin-top: 10px;
+  }
+  
+  .product-card .free-shipping {
+    color: green;
+    font-size: 12px;
+  }
+  
+  .product-card button {
+    background-color: #5e2b25;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .product-card button:hover {
+    background-color: #4b221e;
+  }
+  
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .category {
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .entertainment {
+    background-color: #444;
+  }
+  
+  .videogames {
+    background-color: #3498db;
+  }
+  
+  .home {
+    background-color: #e74c3c;
+  }
+  
+  .sports {
+    background-color: #2ecc71;
+  }
+  
+  .gardening {
+    background-color: #27ae60;
+  }
+  
+  .fashion {
+    background-color: #ff69b4;
+  }
+  
