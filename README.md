@@ -1,2 +1,0 @@
-# SubastALL
- Pagina web moderna

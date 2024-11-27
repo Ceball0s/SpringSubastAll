@@ -1,0 +1,31 @@
+# Archivos de configuración de Gradle
+.gradle/
+build/
+
+# Archivos generados por Gradle
+/.gradle/
+/build/
+
+# Archivos específicos de IDEs
+/.idea/
+/.vscode/
+/*.iml
+
+# Archivos de configuración del entorno (dependiendo del IDE)
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Archivos de configuración de Spring Boot
+*.jks
+*.keystore
+
+# Archivos de configuración específicos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de Gradle Wrapper
+gradlew
+gradlew.bat
