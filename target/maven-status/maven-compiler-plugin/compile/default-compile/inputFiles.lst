@@ -18,6 +18,7 @@
 /home/demon/Documentos/6_semestre/infraes/SubastALL/src/main/java/com/subastall/ExceptionHandler/GlobalExceptionHandler.java
 /home/demon/Documentos/6_semestre/infraes/SubastALL/src/main/java/com/subastall/Demo/DemoController.java
 /home/demon/Documentos/6_semestre/infraes/SubastALL/src/main/java/com/subastall/Producto/ProductoRepository.java
+/home/demon/Documentos/6_semestre/infraes/SubastALL/src/main/java/com/subastall/Producto/UserDTOP.java
 /home/demon/Documentos/6_semestre/infraes/SubastALL/src/main/java/com/subastall/Jwt/JwtService.java
 /home/demon/Documentos/6_semestre/infraes/SubastALL/src/main/java/com/subastall/Auth/LoginRequest.java
 /home/demon/Documentos/6_semestre/infraes/SubastALL/src/main/java/com/subastall/Config/ApplicationConfig.java

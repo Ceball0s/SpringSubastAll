@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -32,14 +33,17 @@ public class Producto {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
 
-    @Lob
-    private byte[] foto;
+    @ElementCollection
+    @CollectionTable(name = "producto_fotos", joinColumns = @JoinColumn(name = "producto_id"))
+    @Column(name = "ruta")
+    private List<String> fotos;
 
     // @ManyToOne(fetch = FetchType.LAZY)
     // @JoinColumn(name = "user_id", nullable = false)
     // private User user; // Relación con el usuario propietario del producto
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    // @JsonBackReference
     private User user;
 
 }

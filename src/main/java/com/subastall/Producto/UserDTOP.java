@@ -1,17 +1,23 @@
-package com.irojas.demojwt.User;
+package com.irojas.demojwt.Producto;
 
+import com.irojas.demojwt.User.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Base64;
+import java.util.Date;
+import com.irojas.demojwt.User.User;
+import com.irojas.demojwt.User.UserDTO;
 import java.util.List;
-import com.irojas.demojwt.Producto.Producto;
+
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequest {
+public class UserDTOP {
     int id;
     String username;
     String firstname;
@@ -19,6 +25,4 @@ public class UserRequest {
     String country;
     String date;
     String genter;
-    List<Producto> productos;
 }
-//

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.irojas.demojwt.User.User;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -15,5 +16,5 @@ public class AgregarRequest {
     private String nombre;
     private String descripcion;
     private Double precioInicial;
-    private String fotoBase64;
+    private List<String> fotos;
 }

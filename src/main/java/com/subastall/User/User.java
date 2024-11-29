@@ -48,6 +48,7 @@ public class User implements UserDetails {
     String date;
     String genter;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    // @JsonManagedReference
     List<Producto> productos;
 
     @Enumerated(EnumType.STRING) 

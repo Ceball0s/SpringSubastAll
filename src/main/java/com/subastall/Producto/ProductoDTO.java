@@ -8,7 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Base64;
 import java.util.Date;
-import com.irojas.demojwt.User.User;
+import com.irojas.demojwt.Producto.UserDTOP;
+import java.util.List;
 
 @Data
 @Builder
@@ -19,9 +20,9 @@ public class ProductoDTO {
     private String nombre;
     private String descripcion;
     private Double precioInicial;
-    private String fotoBase64;
+    private List<String> fotos; // Lista de rutas de las fotos
     private Date fechaCreacion;
-    private User user;
+    private UserDTOP user;
 
     // Constructor para convertir la foto binaria a Base64
     public ProductoDTO(Producto producto) {
@@ -29,9 +30,17 @@ public class ProductoDTO {
         this.nombre = producto.getNombre();
         this.descripcion = producto.getDescripcion();
         this.precioInicial = producto.getPrecioInicial();
-        this.fotoBase64 = Base64.getEncoder().encodeToString(producto.getFoto());
+        this.fotos = producto.getFotos();
         this.fechaCreacion = producto.getFechaCreacion();
-        this.user = producto.getUser();
+        this.user = new UserDTOP(
+                producto.getUser().getId(),
+                producto.getUser().getUsername(),
+                producto.getUser().getLastname(),
+                producto.getUser().getFirstname(),
+                producto.getUser().getCountry(),
+                producto.getUser().getDate(),
+                producto.getUser().getGenter()
+        );
     }
 
     // Getters y setters

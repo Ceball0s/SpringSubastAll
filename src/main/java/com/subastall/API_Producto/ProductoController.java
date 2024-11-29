@@ -16,6 +16,14 @@ import com.irojas.demojwt.Jwt.JwtService;
 // import com.irojas.demojwt.User.User;
 import java.util.List;
 // UserRepository
+import org.springframework.web.bind.annotation.PathVariable;
+
+//fotos y tipo de estados http
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
+
 
 @RestController
 @RequestMapping("/api/productos")
@@ -40,7 +48,6 @@ public class ProductoController {
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7);
         } 
-        System.out.println("hola");
         if (token == null || !esTokenValido(token)) {
             productos = productoService.obtenerRecomendacionesGenericas();
         } else {
@@ -61,16 +68,33 @@ public class ProductoController {
             token = token.substring(7);
         } 
         if (token == null || !esTokenValido(token)) {
-            return ResponseEntity.status(403).build(); // Acceso denegado
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // Acceso denegado
         }
-        
-
         // Extrae el ID del usuario desde el token
         int usuarioId = extraerUsuarioDeToken(token);
-        //productoService.agregarProducto(request, usuarioId);
+        //agrega la subasta segun el id del usuario que iso la peticion
         ProductoDTO productoGuardado = productoService.agregarProducto(request, usuarioId);
         return ResponseEntity.ok(productoGuardado);
     }
+
+    @GetMapping("/producto/foto/{nombreArchivo}")
+    public ResponseEntity<byte[]> obtenerFoto(@PathVariable String nombreArchivo) {
+        if (nombreArchivo.contains("..") || nombreArchivo.contains("/")) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // probir subir directorio
+        }
+        byte[] fotoBytes = productoService.obtenerFoto(nombreArchivo);
+        // Si los bytes están vacíos, retornamos un 404 Not Found, indicando que no se encontró la foto
+        if (fotoBytes.length == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        // Si la foto existe, la devolvemos con el tipo adecuado (puede ser JPEG, PNG, etc.)
+        return ResponseEntity.ok()
+            .contentType(MediaType.IMAGE_JPEG) // O el tipo adecuado según el archivo
+            .body(fotoBytes);
+
+    }
+
 
 
     private boolean esTokenValido(String token) {
