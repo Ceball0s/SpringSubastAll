@@ -1,5 +1,8 @@
 package com.irojas.demojwt.User;
 
+import com.irojas.demojwt.Producto.Producto;
+
+
 import java.util.Collection;
 import java.util.List;
 
@@ -20,6 +23,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+
 
 @Data
 @Builder
@@ -41,6 +47,9 @@ public class User implements UserDetails {
     String password;
     String date;
     String genter;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Producto> productos;
+
     @Enumerated(EnumType.STRING) 
     Role role;
 

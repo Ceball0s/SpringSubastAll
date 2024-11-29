@@ -19,6 +19,7 @@ public class UserService {
         .date(userRequest.getDate())
         .genter(userRequest.getGenter())
         .role(Role.USER)
+        .productos(userRequest.getProductos())
         .build();
         
         userRepository.updateUser(user.id, user.firstname, user.lastname, user.country, user.genter);
@@ -39,6 +40,27 @@ public class UserService {
             .country(user.country)
             .date(user.date)
             .genter(user.genter)
+            .productos(user.productos)
+            .build();
+            return userDTO;
+        }
+        return null;
+    }
+
+    public UserDTO getUser(String username) {
+        User user= userRepository.findByUsername(username).orElse(null);
+       
+        if (user!=null)
+        {
+            UserDTO userDTO = UserDTO.builder()
+            .id(user.id)
+            .username(user.username)
+            .firstname(user.firstname)
+            .lastname(user.lastname)
+            .country(user.country)
+            .date(user.date)
+            .genter(user.genter)
+            .productos(user.productos)
             .build();
             return userDTO;
         }

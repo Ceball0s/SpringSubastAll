@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.security.core.userdetails.UserDetails;
+// import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -44,19 +45,41 @@ public class JwtService {
         return getClaim(token, Claims::getSubject);
     }
 
+    // public String getIdFromToken(String token) {
+    //     return getClaim(token, claims -> claims.get("id", String.class));
+    // }
+
+
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username=getUsernameFromToken(token);
-        return (username.equals(userDetails.getUsername())&& !isTokenExpired(token));
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    public boolean isTokenValid(String token) {
+        String username = getUsernameFromToken(token);
+        // UserDetails userDetails = userDetailsService.loadUserByUsername(username); 
+
+        return (!isTokenExpired(token) && username != null);
     }
 
     private Claims getAllClaims(String token)
     {
-        return Jwts
-            .parserBuilder()
-            .setSigningKey(getKey())
-            .build()
-            .parseClaimsJws(token)
-            .getBody();
+        try {
+            return Jwts
+                .parserBuilder()
+                .setSigningKey(getKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        } catch (io.jsonwebtoken.security.SignatureException e) {
+            // Esto captura problemas con la firma
+            throw new RuntimeException("JWT signature does not match. Invalid token.", e);
+        } catch (Exception e) {
+            // Captura otros posibles errores de parsing o validación
+            System.out.println("hola soy el error");
+            System.out.println(e);
+            throw new RuntimeException("Token validation failed.", e);
+        }
     }
 
     public <T> T getClaim(String token, Function<Claims,T> claimsResolver)

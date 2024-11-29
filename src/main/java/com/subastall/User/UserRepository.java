@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
     Optional<User> findByUsername(String username); 
+
+    Optional<User> findById(Integer id); 
     
     @Modifying()
     @Query("update User u set u.firstname=:firstname, u.lastname=:lastname, u.country=:country, u.genter=:genter where u.id = :id")

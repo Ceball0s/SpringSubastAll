@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
+import com.irojas.demojwt.Producto.Producto;
 
 @Data
 @Builder
@@ -17,4 +19,5 @@ public class UserRequest {
     String country;
     String date;
     String genter;
+    List<Producto> productos;
 }
