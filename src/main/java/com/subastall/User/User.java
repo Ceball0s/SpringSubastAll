@@ -51,7 +51,7 @@ public class User implements UserDetails {
     // @JsonManagedReference
     List<Subasta> subastas;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Oferta> ofertas;
 
 

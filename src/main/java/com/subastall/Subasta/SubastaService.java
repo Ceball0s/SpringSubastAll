@@ -270,6 +270,21 @@ public class SubastaService {
         return new SubastaDTO(subasta);
     }
 
+    public List<SubastaDTO> obtenerSubastasPorUsuario(int id) {
+        User usuario = userRepository.findById(id).orElse(null);
+        if(usuario == null){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuario no existe");
+        }
+        List<Subasta> subastas = subastaRepository.findByUser(usuario);
+
+        // Verificar si cada oferta es ganadora
+        // for (Oferta oferta : ofertas) {
+        //     verificar_ganadora(oferta);
+        // }
+        // Llama al constructor de OfertaDTO que toma una Oferta
+        return  subastas.stream().map(SubastaDTO::new).toList();
+    }
+
     //
     //  utiliades
     //

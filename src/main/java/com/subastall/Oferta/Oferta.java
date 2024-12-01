@@ -21,7 +21,7 @@ public class Oferta {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User usuario;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "subasta_id", nullable = false)
@@ -32,4 +32,7 @@ public class Oferta {
 
     @Column(nullable = false)
     private boolean esGanadora = false; // Indica si es la oferta ganadora
+
+    @Column(nullable = false)
+    private boolean esCancelada = false;
 }

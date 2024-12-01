@@ -144,6 +144,16 @@ public class SubastaController {
         return ResponseEntity.ok(subastaCancelada);
     }
 
+    @GetMapping("/usuario")
+    public ResponseEntity<List<SubastaDTO>> cancelarSubasta(@RequestHeader("Authorization") String token) {
+        if (!esTokenValido(token)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // Acceso denegado
+        }
+        int usuarioId = extraerUsuarioDeToken(token);
+        List<SubastaDTO> subastas = subastaService.obtenerSubastasPorUsuario(usuarioId);
+        return ResponseEntity.ok(subastas);
+    }
+
 
     private boolean esTokenValido(String token) {
         // Valida el token JWT

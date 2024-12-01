@@ -26,7 +26,7 @@ public class SubastaDTO {
     private Date fechaCreacion;
     private Date fechaCierre;
     private String estado;
-    private UserDTOP user;
+    private UserDTOP usuario_subasta;
     // private UserDTOP user_oferta_actual; // Puede ser null
 
     public SubastaDTO(Subasta subasta) {
@@ -39,15 +39,7 @@ public class SubastaDTO {
         this.fechaCreacion = subasta.getFechaCreacion();
         this.fechaCierre = subasta.getFechaCierre();
         
-        this.user = new UserDTOP(
-                subasta.getUser().getId(),
-                subasta.getUser().getUsername(),
-                subasta.getUser().getLastname(),
-                subasta.getUser().getFirstname(),
-                subasta.getUser().getCountry(),
-                subasta.getUser().getDate(),
-                subasta.getUser().getGenter()
-        );
+        this.usuario_subasta = new UserDTOP(subasta.getUser());
 
         if (subasta.getEstado() == EstadoSubasta.ACTIVA){
             this.estado = "ACTIVA";
@@ -56,6 +48,5 @@ public class SubastaDTO {
         } else{
             this.estado = "CANCELADA";
         }
-        
     }
 }

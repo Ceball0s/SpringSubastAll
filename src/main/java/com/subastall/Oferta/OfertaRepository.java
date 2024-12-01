@@ -13,9 +13,10 @@ import java.util.Optional;
 @Repository
 public interface OfertaRepository extends JpaRepository<Oferta, Long> {
     List<Oferta> findBySubasta(Subasta subasta);
-    List<Oferta> findByUsuario(User usuario);
-
-    @Query("SELECT o FROM Oferta o WHERE o.subasta.id = :subastaId ORDER BY o.monto DESC")
-    Optional<Oferta> findTopBySubastaOrderByCantidadDesc(@Param("subastaId") Long productoId);
+    List<Oferta> findByUser(User user);
+    Optional<Oferta> findById(Long id);
+    
+    @Query("SELECT o FROM Oferta o WHERE o.subasta.id = :subastaId AND o.esCancelada = false ORDER BY o.monto DESC")
+    Optional<Oferta> findTopBySubastaOrderByMontoDesc(@Param("subastaId") Long subastaId);
 
 }

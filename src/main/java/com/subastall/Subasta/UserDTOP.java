@@ -18,11 +18,21 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTOP {
-    int id;
-    String username;
+    // int id;
+    // String username;
     String firstname;
     String lastname;
     String country;
-    String date;
-    String genter;
+    // String date;
+    // String genter;
+
+    public UserDTOP(User user){
+        // this.id = user.getId();
+        // this.username =  user.getUsername();
+        this.lastname = user.getLastname();
+        this.firstname = user.getFirstname();
+        this.country = user.getCountry();
+        // this.date = user.getDate();
+        // this.genter = user.getGenter();
+    }
 }

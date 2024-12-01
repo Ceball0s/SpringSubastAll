@@ -1,7 +1,7 @@
 package com.irojas.demojwt.Subasta;
 
 import java.util.Optional;
-
+import com.irojas.demojwt.User.User;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,8 +26,9 @@ public interface SubastaRepository extends JpaRepository<Subasta, Long> {
     // List<Subasta> findRecomendadosPorUsuario(@Param("userId") int userId);
 
     Optional<Subasta> findById(long id);
+
+    List<Subasta> findByUser(User user);
     
     @Query("SELECT s FROM Subasta s WHERE s.fechaCierre > CURRENT_TIMESTAMP")
     List<Subasta> findSubastasAbiertas();
-
 }
