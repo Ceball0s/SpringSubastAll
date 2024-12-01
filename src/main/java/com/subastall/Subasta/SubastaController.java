@@ -90,7 +90,7 @@ public class SubastaController {
 
     }
 
-    @GetMapping("/subasta/{subastaId}")
+    @GetMapping("/{subastaId}")
     public ResponseEntity<SubastaDTO> consultarSubasta(@PathVariable int subastaId) {
         // cualquier usuario puede ver cualquier subasta
         // por ahora al ser un proyecto de prueba no hay protecion de datos al enviar la
