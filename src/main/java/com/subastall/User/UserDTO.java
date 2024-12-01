@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
-import com.irojas.demojwt.Producto.Producto;
+import com.irojas.demojwt.Subasta.Subasta;
 
 @Data
 @Builder
@@ -19,5 +19,5 @@ public class UserDTO {
     String country;
     String date;
     String genter;
-    List<Producto> productos;
+    List<Subasta> subastas;
 }

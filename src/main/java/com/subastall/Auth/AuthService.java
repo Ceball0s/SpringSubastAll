@@ -33,6 +33,9 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
+        // if (userRepository.existsByUsername(request.getUsername())) {
+        //     throw new IllegalArgumentException("El nombre de usuario ya está en uso.");
+        // }
         User user = User.builder()
             .username(request.getUsername())
             .password(passwordEncoder.encode( request.getPassword()))

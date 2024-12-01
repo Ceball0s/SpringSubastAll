@@ -19,7 +19,7 @@ public class UserService {
         .date(userRequest.getDate())
         .genter(userRequest.getGenter())
         .role(Role.USER)
-        .productos(userRequest.getProductos())
+        .subastas(userRequest.getSubastas())
         .build();
         
         userRepository.updateUser(user.id, user.firstname, user.lastname, user.country, user.genter);
@@ -40,7 +40,7 @@ public class UserService {
             .country(user.country)
             .date(user.date)
             .genter(user.genter)
-            .productos(user.productos)
+            .subastas(user.subastas)
             .build();
             return userDTO;
         }
@@ -60,7 +60,7 @@ public class UserService {
             .country(user.country)
             .date(user.date)
             .genter(user.genter)
-            .productos(user.productos)
+            .subastas(user.subastas)
             .build();
             return userDTO;
         }

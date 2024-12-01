@@ -1,7 +1,7 @@
 package com.irojas.demojwt.User;
 
-import com.irojas.demojwt.Producto.Producto;
-
+import com.irojas.demojwt.Subasta.Subasta;
+import com.irojas.demojwt.Oferta.Oferta;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +25,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.CascadeType;
-
+import java.util.Set;
 
 @Data
 @Builder
@@ -49,7 +49,17 @@ public class User implements UserDetails {
     String genter;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     // @JsonManagedReference
-    List<Producto> productos;
+    List<Subasta> subastas;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Oferta> ofertas;
+
+
+    // @OneToMany(mappedBy = "user_oferta_actual", cascade = CascadeType.ALL, orphanRemoval = true)
+    // // @JsonManagedReference
+    // List<Subasta> ofertas;
+
+    
 
     @Enumerated(EnumType.STRING) 
     Role role;

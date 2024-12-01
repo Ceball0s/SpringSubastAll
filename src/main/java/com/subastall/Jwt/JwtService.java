@@ -58,7 +58,6 @@ public class JwtService {
     public boolean isTokenValid(String token) {
         String username = getUsernameFromToken(token);
         // UserDetails userDetails = userDetailsService.loadUserByUsername(username); 
-
         return (!isTokenExpired(token) && username != null);
     }
 
@@ -76,7 +75,6 @@ public class JwtService {
             throw new RuntimeException("JWT signature does not match. Invalid token.", e);
         } catch (Exception e) {
             // Captura otros posibles errores de parsing o validación
-            System.out.println("hola soy el error");
             System.out.println(e);
             throw new RuntimeException("Token validation failed.", e);
         }
