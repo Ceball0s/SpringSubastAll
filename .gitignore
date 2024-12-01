@@ -1,6 +1,7 @@
 # Archivos de configuración de Gradle
 .gradle/
 build/
+target
 
 # Archivos generados por Gradle
 /.gradle/
