@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import com.irojas.demojwt.User.User;
 import java.util.Date;
 import java.util.List;
+import com.irojas.demojwt.Subasta.Subasta.EstadoSubasta;
 
 @Data
 @Builder
@@ -18,6 +19,8 @@ public class AgregarRequest {
     private Double precioInicial;
     private List<String> fotos;
     private Date fechaCierre;
+    private Double precioActual;
+    private EstadoSubasta estado;
 }
 
 // {

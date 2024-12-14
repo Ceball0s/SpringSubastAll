@@ -153,6 +153,9 @@ public class SubastaService {
         }
         if (request.getPrecioInicial() != null) {
             subastaExistente.setPrecioInicial(request.getPrecioInicial());
+            if(subastaExistente.getPrecioActual() < subastaExistente.getPrecioInicial()){
+                subastaExistente.setPrecioActual(request.getPrecioInicial());
+            }
         }
         if (request.getFechaCierre() != null) {
             subastaExistente.setFechaCierre(request.getFechaCierre());
@@ -169,6 +172,9 @@ public class SubastaService {
             // Guardar las nuevas fotos
             List<String> rutasFotos = guardarFotos(request.getFotos());
             subastaExistente.setFotos(rutasFotos);
+        }
+        if (request.getEstado() != null){
+            subastaExistente.setEstado(request.getEstado());
         }
 
         // 5. Guardar la subasta modificada

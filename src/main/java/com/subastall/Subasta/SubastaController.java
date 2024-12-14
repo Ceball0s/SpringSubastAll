@@ -104,7 +104,7 @@ public class SubastaController {
         return ResponseEntity.ok(subastaModificada);
     }
 
-    @PutMapping("/subasta/{subastaId}")
+    @PutMapping("/{subastaId}")
     public ResponseEntity<SubastaDTO> modificarSubasta(@PathVariable int subastaId,
                                                        @RequestBody AgregarRequest request,
                                                        @RequestHeader("Authorization") String token) {
