@@ -103,7 +103,7 @@ public class SubastaController {
         //mostrar la modificacion
         return ResponseEntity.ok(subastaModificada);
     }
-
+    @CrossOrigin(origins = "*")
     @PutMapping("/{subastaId}")
     public ResponseEntity<SubastaDTO> modificarSubasta(@PathVariable int subastaId,
                                                        @RequestBody AgregarRequest request,
@@ -145,7 +145,7 @@ public class SubastaController {
     }
 
     @GetMapping("/usuario")
-    public ResponseEntity<List<SubastaDTO>> cancelarSubasta(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<List<SubastaDTO>> obtener_Subastas(@RequestHeader("Authorization") String token) {
         if (!esTokenValido(token)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // Acceso denegado
         }

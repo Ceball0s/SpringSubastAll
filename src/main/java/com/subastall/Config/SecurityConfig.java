@@ -9,8 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.irojas.demojwt.Jwt.JwtAuthenticationFilter;
+
+// cors global
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,7 +37,7 @@ public class SecurityConfig {
               authRequest
                 .requestMatchers(HttpMethod.GET).permitAll()
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 )
             .sessionManagement(sessionManager->
@@ -44,6 +48,21 @@ public class SecurityConfig {
             .build();
             
             
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("*"); // Cambia esto a tu frontend si es necesario
+        configuration.addAllowedMethod(HttpMethod.GET);
+        configuration.addAllowedMethod(HttpMethod.POST);
+        configuration.addAllowedMethod(HttpMethod.PUT);
+        configuration.addAllowedMethod(HttpMethod.DELETE);
+        configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true); // Permitir credenciales si se necesitan
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
 }
