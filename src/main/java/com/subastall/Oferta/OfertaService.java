@@ -10,6 +10,7 @@ import com.irojas.demojwt.Subasta.Subasta.EstadoSubasta;
 import com.irojas.demojwt.User.UserRepository;
 
 import java.util.List;
+import java.util.ArrayList;
 
 //error http
 import org.springframework.http.HttpStatus;
@@ -128,6 +129,10 @@ public class OfertaService {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "La subasta no existe");
         }
         List<Oferta> ofertas =  ofertaRepository.findBySubasta(subasta);
+        if (ofertas.isEmpty()) {
+            return new ArrayList<>();
+        }
+
         // Verificar si cada oferta es ganadora
         for (Oferta oferta : ofertas) {
             verificar_ganadora(oferta);
